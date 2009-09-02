@@ -17,9 +17,7 @@ end
 private
 
 def dv(rut)
-  rut = rut.to_s.reverse.split("").map{|x| x.to_i}
-  mults = (2..7).to_a * ((rut.size/6.0).ceil)   
-  dv = 11-rut.zip(mults).inject(0){|x,y| x+=y.first*y.last}%11
-  ((0..9).to_a+["K","0"])[dv].to_s
+  ((0..9).to_a+["K","0"])[11-(rut.to_s.reverse.split("").map{|x| x.to_i}).zip((2..7).to_a * ((rut.size/6.0).ceil)).inject(0){|x,y| x+=y.first*y.last}%11].to_s
 end
+
 
