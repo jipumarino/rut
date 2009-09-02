@@ -4,10 +4,7 @@ require 'logger'
 
 get '/:rut' do
   Logger.new('access.log').info("Remote IP:#{request.ip}, URL:#{request.url}")
-  rut = params[:rut]
-  splitted = rut.split("-")
-  rut = splitted.first
-  /^\d+$/ =~ rut ? rut.to_s+"-"+dv(rut) : "Car&aacute;cter no v&aacute;lido"
+  /^\d+$/ =~ params[:rut] ? "#{params[:rut]}-#{dv(params[:rut])}" : "S&oacute;lo ingrese d&iacute;gitos"
 end
 
 get '/?' do
