@@ -14,7 +14,7 @@ end
 private
 
 def dv(rut)
-  ((0..9).to_a+["K","0"])[11-(rut.to_s.reverse.split("").map{|x| x.to_i}).zip((0..rut.size).map{|x| x%6+2}).inject(0){|x,y| x+=y[0]*y[1]}%11].to_s
+  ((0..9).to_a+["K","0"])[11-(rut.reverse.split("")).zip((0..rut.size).map{|x| x%6+2}).inject(0){|x,y| x+=y[0].to_i*y[1]}%11]
 end
 
 
